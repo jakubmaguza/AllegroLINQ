@@ -18,5 +18,9 @@ namespace AllegroLINQ.src
                 yield return ai;
             }
         }
+        public static AllegroQueryable<AllegroItem> AllegroItems()
+        {
+            return new AllegroQueryable<AllegroItem>();
+        }
     }
 }
