@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 using System.Xml.Linq;
 
 namespace AllegroLINQ.src
@@ -12,11 +7,14 @@ namespace AllegroLINQ.src
     {
         public static object Execute(Expression expression)
         {
-            return new List<AllegroItem>
-            {
-                new AllegroItem {Title = "C# cośtam", ItemUri = new Uri("http://www.c1.com/")},
-                new AllegroItem {Title = "C#", ItemUri = new Uri("http://www.c2.com/")}
-            };
+            var stringURL = new AllegroQueryContext().TranslateExpressionTree(expression);
+            XElement _allegroRSS = XElement.Load(stringURL);
+            return AllegroHelper.ParseAllegroXml(_allegroRSS);
+        }
+
+        private string TranslateExpressionTree(Expression expression)
+        {
+            return new ExpressionTreeTranslator().Translate(expression);
         }
     }
 }
