@@ -7,7 +7,7 @@ namespace AllegroLINQ.src
 {
     static class AllegroHelper
     {
-        public static IEnumerable<AllegroItem> TryParseAllegroXml(XElement xel)
+        public static IEnumerable<AllegroItem> ParseAllegroXml(XElement xel)
         {
             var channelElements = xel.Elements().First().Elements("item");
             foreach (var employee in channelElements)
