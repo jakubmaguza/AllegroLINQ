@@ -24,6 +24,7 @@ namespace AllegroLINQ.src
         {
             return (T)AllegroQueryContext.Execute(expression);
         }
+
     }
 
 }
